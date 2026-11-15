@@ -1,0 +1,78 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve ApexPathAI software or simulation
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much detail as possible to help us reproduce and resolve the problem.
+  - type: input
+    id: version
+    attributes:
+      label: ApexPathAI Version
+      description: What version of ApexPathAI are you running? (e.g., 2.0.0 or git commit SHA)
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Linux (Ubuntu 22.04 / 24.04)
+        - Windows 10 / 11
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Docker Container
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python Version
+      placeholder: "Python 3.10.12 / Python 3.11.9 / Python 3.12.3 / Python 3.13.0"
+    validations:
+      required: true
+  - type: input
+    id: track-scenario
+    attributes:
+      label: Active Track & Scenario
+      description: Which circuit and test scenario were active when the bug occurred?
+      placeholder: "Monza / monza_tunnel_blackout / NOMINAL_RACELINE"
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps or minimal command to reproduce the issue.
+      placeholder: |
+        1. Run 'apexpath-cockpit --track Monza'
+        2. Navigate to 'http://127.0.0.1:8000'
+        3. Trigger scenario 'monza_tunnel_blackout'
+        4. See error in terminal
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log Output & Traceback
+      description: Paste any relevant terminal logs, stack traces, or browser console outputs.
+      render: shell
+    validations:
+      required: false

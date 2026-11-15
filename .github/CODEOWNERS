@@ -1,0 +1,31 @@
+# Global repository maintainers
+* @ApexPathAI/maintainers
+
+# State Estimation, Kalman Filters & Strapdown Mechanization
+/Localization/core/ekf_engine.py      @ApexPathAI/state-estimation
+/Localization/core/eskf_3d.py         @ApexPathAI/state-estimation
+/Localization/core/fusion_engine.py   @ApexPathAI/state-estimation
+/Localization/core/types.py           @ApexPathAI/state-estimation
+
+# Control & Vehicle Guidance
+/Localization/core/mpc_controller.py  @ApexPathAI/controls
+
+# Proving Ground Validation, Scorecards & Stress Replay
+/Localization/core/session_orchestrator.py  @ApexPathAI/validation
+/Localization/core/stress_replay_engine.py  @ApexPathAI/validation
+/Localization/core/validation_suite.py      @ApexPathAI/validation
+/Localization/core/health_supervisor.py     @ApexPathAI/validation
+
+# Telemetry Server & Cockpit Interface
+/Localization/telemetry_server.py     @ApexPathAI/platform
+/Localization/core/telemetry_api.py   @ApexPathAI/platform
+
+# Datasets & Mapping
+/Localization/datasets/               @ApexPathAI/mapping
+/Localization/core/map_manager.py     @ApexPathAI/mapping
+/Localization/utils/track_loader.py   @ApexPathAI/mapping
+
+# Build, Packaging & CI/CD
+/pyproject.toml                       @ApexPathAI/infrastructure
+/requirements*.txt                    @ApexPathAI/infrastructure
+/.github/                             @ApexPathAI/infrastructure

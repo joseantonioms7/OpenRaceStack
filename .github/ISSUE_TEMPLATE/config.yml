@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/YourOrg/ApexPathAI/discussions
+    about: Ask questions, share telemetry setups, and discuss autonomous vehicle estimation architectures.
+  - name: 📖 Documentation & Math Guides
+    url: https://yourorg.github.io/ApexPathAI/
+    about: Read comprehensive guides on CTRV EKF derivations, 15-DOF ESKF, and proving ground validation.

@@ -1,0 +1,34 @@
+version: 2
+updates:
+  # Maintain Python package dependencies in pyproject.toml & requirements.txt
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      production-dependencies:
+        patterns:
+          - "fastapi"
+          - "uvicorn"
+          - "websockets"
+          - "numpy"
+          - "scipy"
+          - "pandas"
+      development-dependencies:
+        patterns:
+          - "ruff"
+          - "mypy"
+          - "pytest*"
+          - "mkdocs*"
+    commit-message:
+      prefix: "deps"
+
+  # Maintain GitHub Actions workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "ci"

@@ -1,0 +1,37 @@
+name: 💡 Feature Request
+description: Propose a new feature, state estimator, sensor interface, scenario, or dashboard enhancement
+title: "[FEAT]: "
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We welcome proposals for new estimation algorithms, perception interfaces, proving ground scenarios, and visualization capabilities!
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: Is your feature request related to a specific operational challenge or validation need?
+      placeholder: "e.g., I need to validate vehicle behavior under heavy banking or high pitch gradients on oval tracks..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution / Architectural Design
+      description: Describe your proposed solution, algorithm, mathematical formulation, or UI screen design.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative designs, existing open-source libraries, or heuristics you have considered.
+    validations:
+      required: false
+  - type: checkboxes
+    id: contribution-willingness
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to submit a Pull Request implementing this feature.

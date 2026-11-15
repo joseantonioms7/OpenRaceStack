@@ -1,0 +1,78 @@
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:16-alpine
+    container_name: apexpath-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-apexpath}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-apexpath_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-apexpath_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-apexpath} -d ${POSTGRES_DB:-apexpath_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. Redis Telemetry Pub/Sub Cache
+  redis:
+    image: redis:7-alpine
+    container_name: apexpath-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 3. ApexPathAI Backend (FastAPI + Simulation + Algorithms)
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: apexpath-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER:-apexpath}:${POSTGRES_PASSWORD:-apexpath_secret}@db:5432/${POSTGRES_DB:-apexpath_db}
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_ENABLED=true
+      - DEFAULT_CIRCUIT=Monza
+      - SIMULATION_DT=0.05
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  # 4. ApexPathAI Frontend (React + TypeScript + Vite + Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: apexpath-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

@@ -1,0 +1,69 @@
+site_name: ApexPathAI Documentation
+site_description: Autonomous Vehicle Localization, 15-DOF State Estimation & Proving Ground Validation Platform
+site_url: https://yourorg.github.io/ApexPathAI/
+repo_url: https://github.com/YourOrg/ApexPathAI
+repo_name: YourOrg/ApexPathAI
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: cyan
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: cyan
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Platform Architecture:
+      - Overview & Topology: architecture/platform_overview.md
+      - State Estimators (CTRV & 15-DOF ESKF): architecture/state_estimators.md
+      - Path Guidance & Kinematics: architecture/mpc_guidance.md
+  - Proving Ground Validation:
+      - 7-Rule KPI Scorecard: proving_ground/scorecard.md
+      - Stress Scenarios & Replay: proving_ground/scenarios.md
+  - Glass Cockpit Dashboard: cockpit/overview.md
+  - Deployment & Infrastructure:
+      - Docker & Production Deployment: deployment/docker_deployment.md
+  - API Reference:
+      - REST & WebSocket API: api/api_reference.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - attr_list
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -1,0 +1,70 @@
+name: 🔬 Filter Divergence / Estimator Issue
+description: Report an issue with Kalman filters, vehicle dynamics, MPC tracking, or sensor fusion
+title: "[ALGO]: "
+labels: ["algorithm", "state-estimation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for reporting mathematical anomalies, covariance collapse, filter divergence, angle wrapping bugs, or controller instabilities.
+  - type: dropdown
+    id: estimator
+    attributes:
+      label: Affected Subsystem / Algorithm
+      options:
+        - 5-State Planar CTRV EKF (LocalizationEKF)
+        - 15-DOF Error-State Kalman Filter on SE(3) (ErrorStateKalmanFilter3D)
+        - Multi-Sensor Fusion Engine (MultiSensorFusionEngine)
+        - Kinematic Bicycle Model / Guidance (ModelPredictiveController)
+        - Health Supervisor & FDE (HealthSupervisor)
+        - Session Orchestrator & 7-Rule KPI Scorecard
+        - LiDAR Gauss-Newton Scan Matcher
+      validations:
+        required: true
+  - type: checkboxes
+    id: sensor-channels
+    attributes:
+      label: Active Sensor Channels
+      options:
+        - label: GNSS Position / Course-Over-Ground
+        - label: IMU (Accelerometer & Gyroscope)
+        - label: Wheel Odometry
+        - label: 2D LiDAR Scan Matching
+        - label: Camera Visual Odometry
+        - label: Track Boundary Corridor Constraint
+  - type: dropdown
+    id: anomaly-type
+    attributes:
+      label: Mathematical Anomaly Type
+      options:
+        - Filter Divergence / Position Drift
+        - Non-Symmetric Positive Definite (Non-SPD) Covariance P
+        - Innovation Residual (NIS) Gating False Rejection
+        - Angular Discontinuity / S^1 Wrap Glitch
+        - Velocity or Heading Estimator Lag
+        - Boundary Clearance Calculation Glitch
+        - MPC Control Saturation / Chattering
+      validations:
+        required: true
+  - type: input
+    id: circuit-tested
+    attributes:
+      label: Track / Circuit Tested
+      placeholder: "Monza / Spa / Silverstone / Austin / Zandvoort"
+    validations:
+      required: true
+  - type: textarea
+    id: mathematical-details
+    attributes:
+      label: Detailed Mathematical Observation
+      description: Describe the state vector behavior, covariance trace evolution, or residual anomaly observed.
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry-snapshot
+    attributes:
+      label: Telemetry / KPI Snapshot
+      description: Paste relevant telemetry JSON snapshots or scorecard rule metrics.
+      render: json
+    validations:
+      required: false

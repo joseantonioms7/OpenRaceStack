@@ -1,0 +1,15 @@
+ApexPathAI
+Copyright 2026 ApexPathAI Contributors
+
+This product includes software developed by the ApexPathAI project.
+
+Third-Party Acknowledgments:
+1. Racetrack Datasets (Localization/datasets/)
+   Derived from the F1TENTH / TUM Racetrack Database.
+   Reference: Betz, J., Zheng, H., Liniger, A., Rosolia, U., Karle, P.,
+   Behl, M., Krovi, V., Mangharam, R., "Autonomous Vehicles on the Edge:
+   A Survey on Autonomous Vehicle Racing", IEEE Open Journal of Intelligent
+   Transportation Systems, vol. 3, pp. 458-488, 2022.
+   Original racetrack database by Alexander Heilmeier (TUM FTM).
+   The datasets are provided under the GNU General Public License v3.0
+   as preserved in Localization/datasets/LICENSE.

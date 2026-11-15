@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use OpenRaceStack or ApexPathAI in your academic or industrial research, please cite it as below."
+title: "OpenRaceStack: A Modular, Cross-Platform Autonomous Racing Framework for Multi-Scale Vehicles"
+version: 1.0.0-rc1
+date-released: "2026-11-15"
+license: "Apache-2.0"
+repository-code: "https://github.com/apexpath-ai/ApexPathAI"
+url: "https://github.com/apexpath-ai/ApexPathAI"
+abstract: >-
+  OpenRaceStack is an open-source, modular, cross-platform autonomous racing framework
+  and proving ground validation platform designed for multi-scale vehicles (1:10 scale F1TENTH,
+  electric go-karts, Dallara AV-21 IndyCars, and passenger GT racecars). The framework provides
+  high-rate dynamic bicycle models with Pacejka tires, real-time Frenet-frame Model Predictive
+  Control (<2 ms solve latency), quintic/quartic Frenet lattice trajectory planning,
+  2D LiDAR SVD-ICP and NDT scan matching, multi-agent racing simulation with aerodynamic
+  wake drafting, and recursive least squares system identification and online friction adaptation.
+keywords:
+  - "autonomous racing"
+  - "vehicle dynamics"
+  - "model predictive control"
+  - "frenet trajectory planning"
+  - "state estimation"
+  - "system identification"
+  - "online adaptation"
+  - "multi-agent simulation"
+  - "F1TENTH"
+  - "Indy Autonomous Challenge"
+authors:
+  - family-names: "Architect"
+    given-names: "Senior Robotics Software"
+    affiliation: "OpenRaceStack Core Research Team"
+  - family-names: "ApexPathAI"
+    given-names: "Contributors"
+    affiliation: "ApexPathAI & OpenRaceStack Open Source Community"
